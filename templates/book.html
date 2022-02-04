@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+
+  {%for se in book_details %}
+      <p>{{se.isbn}},{{se.title}},{{se.author}},{{se.year}}</p>
+  {% endfor%}
+  <p>Avg rating (data fetched from Good reads) : {{avg_rating}}</p>
+  <p>Total number of reviews for this book : {{work_ratings_count}}</p>
+  {%for se in review_details %}
+      <p>{{se.review}},{{se.rating}}</p>
+  {% endfor%}
+
+    <form action="{{url_for('book', val = book_details[0].isbn)}}" method ="post"> 
+        
+        
+        <label >Rating between 1 and 5:</label>
+        <input type="number" placeholder="Rating" name="rating" min="1" max="5">
+        <br><br>
+        <label >Submit Review for this {{book_details[0].isbn}}:</label>
+        <textarea id="bookreview" name="review" rows="4" cols="50">
+        
+        </textarea>
+        <br><br>
+        <input type="submit" value="Submit">
+
+    </form>
+    <p>{{message}} </p> 
+  
+
+{% endblock %}

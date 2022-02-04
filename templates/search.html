@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+<form action="{{ url_for('search') }}" method="post">
+  <label>Search: </label>
+  <input type="text" placeholder="Search with title or author name or isbn no" name="isb" required>
+  <button type="submit" class="registerbtn">Search</button>
+</form>
+  
+<ul>
+  
+  {%for se in s %}
+      <a href="{{url_for('book', val = se.isbn)}}" "><li>{{se.title}}</li></a>
+  {% endfor%}
+  
+</ul>
+{% endblock %}
+

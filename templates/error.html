@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Success!
+{% endblock %}
+
+{% block body %}
+    
+    <h1>Invalid credentials!</h1>
+    <p><a href="{{ url_for('sign_in')}}">Sign in.</a></p>
+    
+{% endblock %}
